@@ -1,0 +1,34 @@
+{% extends 'pages/base.html' %}
+{% block conteudo %}
+<div class="container mt-5">
+  <table class="table table-bordered border-2 border-primary rounded">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome do Autor</th>
+        <th scope="col">Data de Nascimento</th>
+        <th scope="col">País de Origem</th>
+        <th scope="col" class="text-center">Ações</th> 
+      </tr>
+    </thead>
+    <tbody>
+      {% for autor in autores %} 
+        <tr>
+          <th scope="row">{{ autor.id }}</th>
+          <td>{{ autor.nome }}</td>
+          <td>{{ autor.data_nascimento|date:"d" }} de {{ autor.data_nascimento|date:"F" }} de {{ autor.data_nascimento|date:"Y" }}</td> 
+          <td>{{ autor.pais_origem }}</td> 
+          <td class="text-center">
+            <a href="{% url 'editar_autor' autor.id %}" class="btn btn-primary btn-sm">Editar</a>  |
+            <a href="{% url 'excluir_autor' autor.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Você tem certeza que deseja excluir este autor?');">Excluir</a>         
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="text-center">
+    <a href="/" class="btn btn-primary">Voltar para o início</a>
+  </div>
+</div>
+{% endblock %}

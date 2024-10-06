@@ -1,0 +1,24 @@
+{% extends 'pages/base.html' %}
+{% block conteudo %}
+<div class="container mt-5" style="min-height: 100vh;">
+  <div class="text-center mt-5">
+    <div class="bg-white shadow-lg col-6 mx-auto rounded-3 d-flex flex-column align-items-center">   
+
+      <h4 class="text-dark fw-bold">Criar</h4>
+      <div class="container d-flex flex-column">
+        <a href="{% url 'criar_autor' %}" class="btn btn-primary mb-3 fw-bold border-rounded p-2">Criar Autor</a>
+        <a href="{% url 'criar_categoria' %}" class="btn btn-primary mb-3 fw-bold border-rounded p-2">Criar Categoria<a>
+        <a href="{% url 'criar_livro' %}" class="btn btn-primary mb-3 fw-bold border-rounded p-2">Criar Livro</a>
+      </div>
+    
+
+      <h4 class="text-dark fw-bold mt-5">Listar</h4>
+      <div class="container d-flex flex-column">
+        <a href="{% url 'listar_autor' %}" class="btn btn-primary mb-3 fw-bold border-rounded p-2">Listar Autores</a>
+        <a href="{% url 'listar_categoria' %}" class="btn btn-primary mb-3 fw-bold border-rounded p-2">Listar Categorias</a>
+        <a href="{% url 'listar_livros' %}" class="btn btn-primary mb-3 fw-bold border-rounded p-2">Listar Livros</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

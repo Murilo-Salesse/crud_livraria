@@ -1,0 +1,48 @@
+{% extends 'pages/base.html' %}
+{% block conteudo %}
+<div class="container mt-4" style="min-height: 100vh;">
+  <div>
+      <h1 class="text-center">Cadastro de Livros</h1>
+
+    <form action="{% url 'criar_livro' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nameBook" class="form-label">Nome do livro</label>
+            <input type="text" class="form-control" name="nameBook" id="nameBook" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="autorBook" class="form-label">Autor</label>
+            <select class="form-select" name="autorBook" id="autorBook" required>
+                <option value="" disabled selected>Selecione um autor</option>
+                {% for autor in autores %}
+                    <option value="{{ autor.id }}">{{ autor.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="categoriaBook" class="form-label">Categoria do Livro</label>
+            <select class="form-select" name="categoriaBook" id="categoriaBook" required>
+                <option value="" disabled selected>Selecione uma categoria</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}">{{ categoria.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="yearBook" class="form-label">Ano de publicação</label>
+            <input type="date" class="form-control" name="yearBook" id="yearBook" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="isbnBook" class="form-label">ISBN</label>
+            <input type="text" class="form-control" name="isbnBook" id="isbnBook" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

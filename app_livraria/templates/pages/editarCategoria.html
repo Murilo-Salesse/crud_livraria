@@ -1,0 +1,15 @@
+{% extends 'pages/base.html' %}
+{% block conteudo %}
+<div class="container mt-5">
+    <h2>Editar Categoria</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="categoriaBook" class="form-label">Nome da Categoria</label>
+            <input type="text" class="form-control" id="categoriaBook" name="categoriaBook" value="{{ categoria.nome }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{% url 'listar_categoria' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

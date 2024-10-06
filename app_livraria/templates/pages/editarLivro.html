@@ -1,0 +1,46 @@
+{% extends 'pages/base.html' %}
+{% block conteudo %}
+<div class="container mt-5">
+    <h2>Editar Livro</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nameBook" class="form-label">Nome do Livro</label>
+            <input type="text" class="form-control" id="nameBook" name="nameBook" value="{{ livro.titulo }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="autorBook" class="form-label">Autor</label>
+            <select class="form-select" name="autorBook" id="autorBook" required>
+                <option value="" disabled>Selecione um autor</option>
+                {% for autor in autores %}
+                    <option value="{{ autor.id }}" {% if autor.id == livro.autor.id %}selected{% endif %}>{{ autor.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="categoriaBook" class="form-label">Categoria do Livro</label>
+            <select class="form-select" name="categoriaBook" id="categoriaBook" required>
+                <option value="" disabled>Selecione uma categoria</option>
+                {% for categoria in categorias %}
+                    <option value="{{ categoria.id }}" {% if categoria.id == livro.categoria.id %}selected{% endif %}>{{ categoria.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="yearBook" class="form-label">Ano de publicação</label>
+            <input type="date" class="form-control" name="yearBook" id="yearBook" value="{{ livro.ano_publicacao }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="isbnBook" class="form-label">ISBN</label>
+            <input type="text" class="form-control" name="isbnBook" id="isbnBook" value="{{ livro.isbn }}" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{% url 'listar_livros' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

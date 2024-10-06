@@ -1,0 +1,23 @@
+{% extends 'pages/base.html' %}
+{% block conteudo %}
+<div class="container mt-5">
+    <h2>Editar Autor</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nomeAutor" class="form-label">Nome do Autor</label>
+            <input type="text" class="form-control" id="nomeAutor" name="nomeAutor" value="{{ autor.nome }}" required>
+        </div>
+        <div class="mb-3">
+          <label for="dataNascimento" class="form-label">Data Nascimento</label>
+          <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" value="{{ autor.data_nascimento }}" required>
+      </div>
+      <div class="mb-3">
+        <label for="paisOrigem" class="form-label">País</label>
+        <input type="text" class="form-control" id="paisOrigem" name="paisOrigem" value="{{ autor.pais_origem }}" required>
+      </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="{% url 'listar_autor' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
